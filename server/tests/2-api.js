@@ -67,7 +67,7 @@ describe('API', function () {
             var json = JSON.parse(body);
             expect(response.statusCode).to.equal(200);
             expect(json).to.be.a.Array;
-            expect(_.last(json).id).to.equal(prompt_id);
+            expect(_.last(json.all).id).to.equal(prompt_id);
             done();
           });
       });
