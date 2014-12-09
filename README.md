@@ -7,7 +7,7 @@ Apples to Apples for your phone.
 This project assumes you have a couple of things installed globally. Make sure you install all this first.
 
 ```
-npm install -g mocha gulp nodemon cordoba ios-sim
+npm install -g mocha gulp nodemon cordova ios-sim
 ```
 
 Also install `imagemagick` (This is big library)
@@ -40,7 +40,7 @@ gulp watch
 
 Whenever you change a file, it will re-compile them.
 
-### 3. Cordoba
+### 3. Cordova
 
 All this is taken from [this tutorial](http://coenraets.org/blog/cordova-phonegap-3-tutorial/). If you have any questions, refer back to it.
 
@@ -56,10 +56,10 @@ cordova plugin add org.apache.cordova.console
 To build your app run the following command:
 
 ```
-gulp cordoba
+gulp cordova
 ```
 
-This will copy all your files into the `cordoba/www` directory.
+This will copy all your files into the `cordova/www` directory.
 
 To run it in an emulator run this:
 
