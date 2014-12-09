@@ -99,6 +99,6 @@ IOS/www/
 .Spotlight-V100
 .Trashes
 
-cordoba/platforms/
-cordoba/plugins/
-cordoba/www/
+cordova/platforms/
+cordova/plugins/
+cordova/www/
