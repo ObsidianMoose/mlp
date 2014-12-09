@@ -51,6 +51,7 @@ cordova platforms add ios
 
 cordova plugin add org.apache.cordova.device
 cordova plugin add org.apache.cordova.console
+cordova plugin add org.apache.cordova.camera
 ```
 
 To build your app run the following command:
