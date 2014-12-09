@@ -58,21 +58,21 @@ gulp.task('js', function () {
 
 
 
-gulp.task('cordoba-build', function () {
+gulp.task('cordova-build', function () {
   gulp.src(['./client/**/*'])
-    .pipe(gulp.dest('./cordoba/www/'));
+    .pipe(gulp.dest('./cordova/www/'));
 });
 
-gulp.task('cordoba-clean', function () {
-  return gulp.src('./cordoba/www/')
+gulp.task('cordova-clean', function () {
+  return gulp.src('./cordova/www/')
     .pipe(clean({
       force: true
     }));
 });
 
 gulp.task('default', ['js', 'sass']);
-gulp.task('cordoba', function (cb) {
-  return runSequence('cordoba-clean', 'cordoba-build', cb);
+gulp.task('cordova', function (cb) {
+  return runSequence('cordova-clean', 'cordova-build', cb);
 });
 
 gulp.task('watch', ['js', 'sass'], function () {
@@ -80,11 +80,11 @@ gulp.task('watch', ['js', 'sass'], function () {
   gulp.watch('./client/**/*.js', ['js']);
 });
 
-gulp.task('cordoba-watch', ['js', 'sass', 'cordoba'], function () {
+gulp.task('cordova-watch', ['js', 'sass', 'cordova'], function () {
   gulp.watch('./client/scss/**/*.scss', function () {
-    return runSequence('sass', 'cordoba');
+    return runSequence('sass', 'cordova');
   });
   gulp.watch('./client/**/*.js', function () {
-    return runSequence('js', 'cordoba');
+    return runSequence('js', 'cordova');
   });
 });
