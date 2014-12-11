@@ -24,6 +24,10 @@
     //routes for rendering the various HTML templates (found in app/*)
     .config(function ($stateProvider, $urlRouterProvider) {
       $urlRouterProvider.otherwise('/login');
+
+      // $http.defaults.withCredentials = true;
+      // delete $http.defaults.headers.common["X-Requested-With"];
+
       $stateProvider
         .state('loading', {
           templateUrl: 'app/loading/loading.html',
@@ -135,5 +139,10 @@
             speed: 400
           }
         });
-    });
+    })
+  .controller('HeaderController', function ($scope, Auth) {
+    $scope.signOut = function () {
+      Auth.signOut();
+    };
+  });
 })();

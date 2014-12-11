@@ -24,7 +24,10 @@ angular.module('mlp.services', [])
       logIn: function (user) {
         return $http.post(MainUrl.get('/login'), {
             email: user.email,
-            password: user.password
+            password: user.password,
+            withCredentials: true
+          }, {
+            withCredentials: true
           })
           .then(function (res) {
             if (res.data.user_id) {
@@ -39,14 +42,21 @@ angular.module('mlp.services', [])
       signUp: function (user) {
         return $http.post(MainUrl.get('/signup'), {
             email: user.email,
-            password: user.password
+            password: user.password,
+            withCredentials: true
+          }, {
+            withCredentials: true
           })
           .then(function (res) {
             $state.go('prompts');
           });
       },
       isAuth: function (redirectToHomeIfLoggedIn, dontRedirectToLogin) {
-        return $http.get(MainUrl.get('/isloggedin'))
+        return $http.get(MainUrl.get('/isloggedin'), {
+          withCredentials: true
+        }, {
+          withCredentials: true
+        })
           .then(function (res, messasge, body) {
             userId = res.data.user_id;
             return userId;
@@ -64,7 +74,11 @@ angular.module('mlp.services', [])
           });
       },
       signOut: function () {
-        return $http.post(MainUrl.get('/signout'))
+        return $http.post(MainUrl.get('/signout'), {
+          withCredentials: true
+        }, {
+          withCredentials: true
+        })
           .then(function (res) {
             $state.go('logIn');
           });
@@ -74,10 +88,18 @@ angular.module('mlp.services', [])
   })
   .factory('PromptFactory', function ($http, MainUrl) {
     var getAllPromptsData = function (dest) {
-      return $http.get(MainUrl.get('/api/prompt'));
+      return $http.get(MainUrl.get('/api/prompt'), {
+        withCredentials: true
+      }, {
+        withCredentials: true
+      });
     };
     var getPromptData = function (id) {
-      return $http.get(MainUrl.get('/api/prompt/' + id))
+      return $http.get(MainUrl.get('/api/prompt/' + id), {
+        withCredentials: true
+      }, {
+        withCredentials: true
+      })
         .then(function (res) {
           return res.data;
         });
@@ -85,10 +107,15 @@ angular.module('mlp.services', [])
     var setPromptWinner = function (promptId, photoId) {
       return $http.put(MainUrl.get('/api/prompt/' + promptId), {
         photoId: photoId,
+        withCredentials: true
+      }, {
+        withCredentials: true
       });
     };
     var createNewPrompt = function (obj) {
-      return $http.post(MainUrl.get('/api/prompt'), obj);
+      return $http.post(MainUrl.get('/api/prompt'), _.extend(obj, {withCredentials: true}), {
+        withCredentials: true
+      });
     };
     return {
       getAllPromptsData: getAllPromptsData,
@@ -100,7 +127,11 @@ angular.module('mlp.services', [])
   .factory('PhotoFactory', function ($http, MainUrl) {
     var photoFactory = {
       get: function (id) {
-        return $http.get(MainUrl.get('/api/photo/' + id));
+        return $http.get(MainUrl.get('/api/photo/' + id), {
+          withCredentials: true
+        }, {
+          withCredentials: true
+        });
       }
     };
     return photoFactory;

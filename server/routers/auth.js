@@ -17,6 +17,7 @@ authRouter.post('/login', auth.authenticate('local'), function (req, res) {
 
 //Checks to see if the user is a valid user and if so returns their user_id
 authRouter.get('/isloggedin', function (req, res) {
+  console.log('/isloggedin: ', req.user);
   var user_id = null;
   if (req.user && req.user.get('id')) {
     user_id = req.user.get('id');
