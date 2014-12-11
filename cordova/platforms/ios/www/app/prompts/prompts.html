@@ -1,0 +1,27 @@
+<div class="app-allprompts" style="overflow:scroll">
+  <app-header back="false" route="logIn"></app-header>
+  <div class="app-title">Open Rounds</div>
+    <div ng-if="status.open.length === 0" class="app-prompt-box left-align last" >
+      <div class="app-box-text">No rounds open.</div>
+    </div>  
+    <div ng-if="status.open.length > 0" ng-repeat="prompt in status.open">
+      <app-prompt-box></app-prompt-box>
+    </div>
+  <div class="app-title">Pending Rounds</div>
+    <div ng-if="status.pending.length === 0" class="app-prompt-box left-align last">
+      <div class="app-box-text">No rounds pending.</div>
+    </div>  
+    <div ng-if="status.pending.length > 0" ng-repeat="prompt in status.pending">
+      <app-prompt-box></app-prompt-box>
+    </div>
+  <div class="app-title">Closed Rounds</div>
+    <div ng-if="status.closed.length === 0" class="app-prompt-box left-align last">
+      <div class="app-box-text">No rounds closed.</div>
+    </div>  
+    <div ng-repeat="prompt in status.closed">
+      <app-prompt-box></app-prompt-box>
+    </div>
+  <a ui-sref="createPrompt" class="app-box-create-round app-grey-out">Create New Round</a>
+  <br/>
+<!--   <a href='#' ng-click="signOut()">Sign Out</a> -->
+</div>

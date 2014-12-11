@@ -5,7 +5,6 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser'); //cookie parsing with signatures
 var session = require('express-session');
 var path = require('path');
-var cors = require('cors');
 var auth = require('./auth');
 
 var authRouter = require('./routers/auth');
@@ -15,8 +14,14 @@ var mediaRouter = require('./routers/media');
 // Middleware
 var app = express();
 app.use(cookieParser());
-// Fix this line when we get our first million
-// http://stackoverflow.com/questions/5710358/how-to-get-post-query-in-express-node-js
+// Custom CORS
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header("Access-Control-Allow-Origin", req.headers.origin);
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');
+  next();
+});
 app.use(bodyParser.urlencoded({
   extended: false,
   limit: '10mb'
@@ -31,7 +36,8 @@ app.use(session({
 }));
 app.use(auth.initialize());
 app.use(auth.session());
-app.use(cors());
+
+
 
 // Application
 var port = process.env.PORT || 8000;
