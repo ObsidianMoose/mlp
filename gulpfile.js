@@ -32,12 +32,12 @@ gulp.task('js', function () {
   gulp.src([
       // angular-file-upload-shim.min.js must be place before angular.min.js
       './client/lib/lodash/dist/lodash.min.js',
-      './client/lib/ng-file-upload/angular-file-upload-shim.min.js',
+      './client/lib/ng-file-upload/angular-file-upload-shim.js',
       './client/lib/moment/min/moment.min.js',
-      './client/lib/angular/angular.min.js',
-      './client/lib/ng-file-upload/angular-file-upload.min.js',
+      './client/lib/angular/angular.js',
+      './client/lib/ng-file-upload/angular-file-upload.js',
       './client/lib/angular-momentjs/angular-momentjs.js',
-      './client/lib/angular-ui-router/release/angular-ui-router.min.js',
+      './client/lib/angular-ui-router/release/angular-ui-router.js',
       './client/lib/ngFx/dist/ngFx.js',
       './client/app/app.js',
       './client/app/loading/loading.js',
