@@ -74,16 +74,19 @@ db.schema.hasTable('photos').then(function (exists) {
   }
 });
 
+
+// OBSIDIAN MOOSE: USER SHOULD HAVE MANY COMMENTS:
+
 //Table for comments - one-to-one relationship with user
 //each comment must have content, user_id, and prompt_id
 db.schema.hasTable('comments').then(function (exists) {
   if (!exists) {
-    db.schema.createTable('comments', function (photo) {
-      photo.increments('id').primary();
-      photo.string('content', 255).notNullable();
-      photo.integer('user_id').references('users.id').notNullable();
-      photo.integer('prompt_id').references('prompts.id').notNullable();
-      photo.timestamps();
+    db.schema.createTable('comments', function (comment) {
+      comment.increments('id').primary();
+      comment.string('content', 255).notNullable();
+      comment.integer('user_id').references('users.id').notNullable();
+      comment.integer('prompt_id').references('prompts.id').notNullable();
+      comment.timestamps();
     }).then(function (table) {
       console.log('Created Table', table);
     });

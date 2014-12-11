@@ -86,7 +86,7 @@ photoRouter.post('/', function (req, res) {
         return new models.Photo({
             user_id: userId,
             prompt_id: promptId,
-            filename: newImageFileName // Relative to /media/
+            filename: newImageFileName // Relative to http://localhost:8000/media/original/
           })
           .save();
       }).then(function (photo) {
@@ -99,7 +99,7 @@ photoRouter.post('/', function (req, res) {
 });
 
 photoRouter.get('/', function (req, res) {
-  models.Photo // Doesn't seem to be working
+  models.Photo
     .fetchAll()
     .then(function (coll) {
       res.json(coll.toJSON()).end();
@@ -107,7 +107,7 @@ photoRouter.get('/', function (req, res) {
 });
 
 photoRouter.get('/:id', function (req, res) {
-  collections.Photos // Doesn't seem to be working
+  collections.Photos
     .query('where', 'id', '=', req.param('id'))
     .fetchOne({
       withRelated: ['user', 'prompt']

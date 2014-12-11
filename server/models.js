@@ -37,6 +37,9 @@ models.User = db.Model.extend({
   },
   winner: function () {
     return this.hasMany(models.Prompt, 'winner_id');
+  },
+  comment: function () {
+    return this.hasMany(models.Comment); //SWES ADDED THIS
   }
 });
 
@@ -52,7 +55,11 @@ models.Prompt = db.Model.extend({
   },
   winner: function () {
     return this.belongsTo(models.Photo, 'winner_id');
+  },
+  comment: function () {
+    return this.hasMany(models.Comment); //SWES ADDED THIS
   }
+
 });
 
 // Photo model - Each photo belongs to one user, and belongs to one prompt
