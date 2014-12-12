@@ -1,7 +1,7 @@
 angular.module("mlp.photoArchive", []) 
 
 .controller("photoArchiveController", function ($scope, PhotoFactory, $state) {
-  $scope.userPhotoArchive = PhotoFactory.userPhotoArchive;
+  $scope.userPhotoArchive = PhotoFactory.userPhotoArchive.data;
 
-  console.log($scope.userPhotoArchive);
+  console.log('photos from photofactory!', $scope.userPhotoArchive);
 });

@@ -1,3 +1,6 @@
 <div class="app-wrapper" ng-controller="photoArchiveController">
   <p>photo archive view!</p>
+    <div class="app-prompt-gallery" ng-repeat="photo in userPhotoArchive">
+      <a ui-sref="prompt({ id: photo.prompt_id })"><img src="media/square-200px/{{ photo.filename }}"/></a>
+    </div>
 </div>
