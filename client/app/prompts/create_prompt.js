@@ -9,8 +9,9 @@ angular.module("mlp.create_prompt", ['ngFx']) // ngFX is simple way to add beaut
 //that prompt.  Users upload each photo anomously and the author has 6 hours after the creation of the prompt to choose a winner.
 .controller("createPromptController", function ($scope, $http, PromptFactory, Auth, $moment, $state) {
   Auth.isAuth();
+  $scope.suggestion = $state.params.suggestion || '';
   $scope.formData = {
-    title: 'hi',
+    title: $scope.suggestion,
     startTime: moment(),
     endTime: moment().add(4, 'h'),
     votingEndTime: moment().add(6, 'h'),
@@ -26,4 +27,5 @@ angular.module("mlp.create_prompt", ['ngFx']) // ngFX is simple way to add beaut
         $state.go('prompts');
       });
   };
+  // console.log($scope.suggestion);
 });

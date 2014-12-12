@@ -1,0 +1,134 @@
+//Controller for the prompt.html file.  Allows user to view selected prompt and upload photo for round.
+
+angular.module("mlp.suggestion", ['ngFx']) // ngFX is simple way to add beautiful animations to your angular apps
+
+//$moment is use to parse, validate, manipulate, and display dates in JavaScript.
+//PromptFactory and Auth are defined in service/services.js
+//The $http service is a core Angular service that facilitates communication with the remote
+//HTTP servers via the browser's XMLHttpRequest object or via JSONP.
+
+.controller("suggestionController", function ($scope, $http, PromptFactory, SuggestionsFactory, Auth, $upload, $moment, $state, $window) {
+  Auth.isAuth();  
+  $scope.id = $state.params.id;
+  $scope.categories = SuggestionsFactory.categories;
+  $scope.goToCreatePrompt = function(suggestion) {
+    // console.log('i work');
+    $state.go('createPrompt', {suggestion: suggestion});
+  };
+  // $scope.dataLoaded = false;
+  // $scope.prompt = {};
+  // $scope.userId = Auth.getUserId();
+  // $scope.userPhotoSubmission = undefined;
+  // $scope.submissionPeriodIsOpen = false;
+  // $scope.photoTaken = false;
+
+  // $scope.onFileSelect = function ($files) {
+  //   var file = $files[0];
+  //   $scope.upload = $upload.upload({
+  //     url: '/api/photo',
+  //     method: 'POST',
+  //     data: {
+  //       prompt_id: $scope.id,
+  //       user_id: Auth.getUserId(),
+  //     },
+  //     file: file,
+  //   }).progress(function (evt) {
+  //     // console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+  //   }).success(function (data, status, headers, config) {
+  //     $state.reload();
+  //   }).error(function (err) {
+  //     console.log('ERROR:', err);
+  //   });
+  // };
+
+  // PromptFactory.getPromptData($scope.id)
+  //   .then(function (data) {
+  //     $scope.prompt = data;
+  //     $scope.dataLoaded = true;
+  //     return true;
+  //   }).then(function (bool) {
+  //     $scope.userPhotoSubmission = $scope.checkForSubmissionByCurrentUser();
+  //     return true;
+  //   }).then(function (bool) {
+  //     $scope.submissionPeriodIsOpen = $scope.checkIfSubmissionPeriodIsOpen();
+  //     return true;
+  //   });
+
+  // //if current user has submitted a photo for this prompt, returns signature of that photo.
+  // $scope.checkForSubmissionByCurrentUser = function () {
+  //   var photos = $scope.prompt.photos;
+  //   for (var i = 0; i < photos.length; i++) {
+  //     var photo = photos[i];
+  //     if (photo.user_id === $scope.userId) {
+  //       console.log("user has submitted: ", photo);
+  //       return photo;
+  //     }
+  //   }
+  //   console.log("user has not submitted a photo.");
+  //   return undefined;
+  // };
+
+  // //returns true if submission period is still active; otherwise returns false.
+  // $scope.checkIfSubmissionPeriodIsOpen = function () {
+  //   return ($scope.prompt.endTime > Date.now());
+  // };
+
+
+  // $scope.startCamera = function () {
+  //   console.log('Start Camera');
+  //   // Grab elements, create settings, etc.
+  //   var canvas = document.getElementById("canvas"),
+  //     context = canvas.getContext("2d"),
+  //     video = document.getElementById("video"),
+  //     videoObj = {
+  //       "video": true
+  //     },
+  //     errBack = function (error) {
+  //       console.log("Video capture error: ", error.code);
+  //     };
+
+  //   // Put video listeners into place
+  //   if (navigator.getUserMedia) { // Standard
+  //     navigator.getUserMedia(videoObj, function (stream) {
+  //       video.src = stream;
+  //       video.play();
+  //     }, errBack);
+  //   } else if (navigator.webkitGetUserMedia) { // WebKit-prefixed
+  //     navigator.webkitGetUserMedia(videoObj, function (stream) {
+  //       video.src = window.webkitURL.createObjectURL(stream);
+  //       video.play();
+  //     }, errBack);
+  //   } else if (navigator.mozGetUserMedia) { // Firefox-prefixed
+  //     navigator.mozGetUserMedia(videoObj, function (stream) {
+  //       video.src = window.URL.createObjectURL(stream);
+  //       video.play();
+  //     }, errBack);
+  //   }
+
+  //   document.getElementById("snap").addEventListener("click", function () {
+  //     $scope.photoTaken = true;
+  //     context.drawImage(video, 0, 0, 230, 173);
+  //     var image = new Image();
+  //     var canvas = document.getElementById("canvas");
+  //     image.src = canvas.toDataURL("image/png");
+  //     console.log(image.src);
+  //     // Upload Image
+  //     $scope.upload = $upload.upload({
+  //       url: '/api/photo',
+  //       method: 'POST',
+  //       data: {
+  //         prompt_id: $scope.id,
+  //         user_id: Auth.getUserId(),
+  //         image_data: image.src
+  //       },
+  //     }).progress(function (evt) {
+  //       // console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+  //     }).success(function (data, status, headers, config) {
+  //       $state.reload();
+  //     }).error(function (err) {
+  //       console.log('ERROR:', err);
+  //     });
+  //   });
+  // };
+  // setTimeout($scope.startCamera, 1000);
+});

@@ -1,0 +1,4 @@
+<div class="app-prompt" ng-controller="suggestionController">
+  <app-header back="true" route="prompts"></app-header>
+  <div ng-repeat="suggestion in categories[id]" ng-click="goToCreatePrompt(suggestion)">{{suggestion}}</div>
+</div>

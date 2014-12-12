@@ -47,6 +47,7 @@ gulp.task('js', function () {
       './client/app/prompts/create_prompt.js',
       './client/app/prompts/prompts.js',
       './client/app/prompts/prompt.js',
+      './client/app/suggestions/suggestion.js',
       './client/app/suggestions/suggestions.js',
       './client/app/suggestions/suggestions_prompts.js',
       './client/app/services/services.js'

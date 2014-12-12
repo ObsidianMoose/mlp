@@ -17,6 +17,7 @@
       'mlp.create_prompt',
       'mlp.prompt',
       'mlp.prompts',
+      'mlp.suggestion',
       'mlp.suggestions',
       'mlp.suggestions_prompts',
       'mlp.services',
@@ -109,7 +110,18 @@
         .state('suggestions', {
           templateUrl: 'app/suggestions/suggestions.html',
           controller: 'suggestionsController',
-          url: '/suggestions',
+          url: '/suggestions/',
+          animation: {
+            enter: 'shrink-in',
+            leave: 'grow-out',
+            ease: 'back',
+            speed: 400
+          }
+        })
+        .state('suggestion', {
+          templateUrl: 'app/suggestions/suggestion.html',
+          controller: 'suggestionController',
+          url: '/suggestion/:id',
           animation: {
             enter: 'shrink-in',
             leave: 'grow-out',
@@ -131,7 +143,7 @@
         .state('createPrompt', {
           // templateUrl: 'app/prompts/create_prompt.html',
           // controller: 'createPromptController',
-          url: '/create-prompt',
+          url: '/create-prompt/:suggestion',
           views: {
             '': {templateUrl: 'app/prompts/create_prompt.html', 
             controller: 'createPromptController'},

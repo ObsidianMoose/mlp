@@ -1,14 +1,25 @@
 <div class="app-prompt">
     <div class="app-title">Suggestions</div>
 
-    <div ng-repeat="(key, value) in categories">
+  <!--   <div ng-repeat="(key, value) in categories">
       <a href="#" class="app-prompt-box left-align hover-red">
         <div class="app-box-text">{{key}}</div>
         <div class="app-box-arrow">
           <img src="img/next.png" />
         </div>
       </a>
+    </div> -->
+
+    <div ng-repeat="(key, value) in categories">
+      <a ui-sref="suggestion({ id: key })" class="app-prompt-box left-align hover-red paragraph">
+        {{key}}
+      </a>
     </div>
+
+<!--     <div ng-if="status.open.length > 0" ng-repeat="prompt in status.open">
+      <app-prompt-box></app-prompt-box>
+    </div> -->
+
 
 <!-- $scope.categories = {
       'Raunchy Office': ['RO1', 'RO2', 'RO3', 'RO4', 'RO5'],
