@@ -160,6 +160,17 @@ angular.module('mlp.services', [])
     };
     return commentFactory;
   })
+  .factory('SuggestionsFactory', function ($http, MainUrl) {
+    var SuggestionsFactory = {
+      categories: {
+        'Raunchy Office': ['RO1', 'RO2', 'RO3', 'RO4', 'RO5'],
+        'Sunday church friends': ['SCF1', 'SCF2', 'SCF3', 'SCF4', 'SCF5'],
+        'For kids': ['FK1', 'FK2', 'FK3', 'FK4', 'FK5'],
+        'Night at the club': ['NATC1', 'NATC2', 'NATC3', 'NATC4', 'NATC5']
+      }
+    };
+    return SuggestionsFactory;
+  })
   .directive('appHeader', function() {
     return {
       restrict: 'E',
