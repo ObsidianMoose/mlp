@@ -20,6 +20,21 @@ var _ = require('lodash'); //A utility library delivering consistency, customiza
 
 var photoRouter = express.Router();
 
+photoRouter.get('/archive', function (req, res) {
+  // console.log('in server photoRouter!!');
+  // res.send("archive!");
+    // console.log('userid?',req.user.attributes.id);
+    var userId = req.user.attributes.id;
+
+    models.Photo
+    .query('where', 'user_id', '=', userId)
+    .fetchAll()
+    .then(function (coll) {
+      // res.json(coll.toJSON()).end();
+      res.json(coll.toJSON()).end;
+    });
+});
+
 photoRouter.post('/', function (req, res) {
   var form = new multiparty.Form();
   form.parse(req, function (err, fields, files) {
@@ -120,5 +135,6 @@ photoRouter.get('/:id', function (req, res) {
       }
     });
 });
+
 
 module.exports = photoRouter;
