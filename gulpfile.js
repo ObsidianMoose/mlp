@@ -44,6 +44,7 @@ gulp.task('js', function () {
       './client/app/logIn/logIn.js',
       './client/app/signUp/signUp.js',
       './client/app/photo/photo.js',
+      './client/app/photo/photoArchive.js',
       './client/app/prompts/create_prompt.js',
       './client/app/prompts/prompts.js',
       './client/app/prompts/prompt.js',
