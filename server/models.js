@@ -74,6 +74,9 @@ models.Photo = db.Model.extend({
   },
   prompt: function () {
     return this.belongsTo(models.Prompt);
+  },
+  comment: function () {
+    return this.hasMany(models.Comment);
   }
 });
 
@@ -87,6 +90,9 @@ models.Comment = db.Model.extend({
   prompt: function () {
     return this.belongsTo(models.Prompt);
   },
+  photo: function () {
+    return this.belongsTo(models.Photo);
+  }
 });
 
 module.exports = models;

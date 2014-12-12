@@ -2,13 +2,18 @@
 
 angular.module("mlp.photo", ['ngFx']) //A simple way to add beautiful animations to your angular apps. Animations based off animate.css. 
 
-.controller("photoController", function ($scope, Auth, PhotoFactory, PromptFactory, $state) {
+.controller("photoController", function ($scope, Auth, PhotoFactory, PromptFactory, CommentFactory, $state) {
   Auth.isAuth();
   $scope.id = $state.params.id;
   $scope.userId = Auth.getUserId();
+  $scope.email = Auth.getEmail();
   $scope.photo = {};
   $scope.submissionPeriodIsOpen = false;
   $scope.hideOverlay = true;
+  $scope.commentText = '';
+  $scope.comments = dummyComments;
+
+  console.log('Email puppy Email puppy',$scope.email);
 
   $scope.setWinner = function () {
     PromptFactory.setPromptWinner($scope.photo.prompt_id, $scope.photo.id)
@@ -28,6 +33,34 @@ angular.module("mlp.photo", ['ngFx']) //A simple way to add beautiful animations
       $scope.photo = res.data;
       $scope.votingPeriodIsOpen = $scope.checkIfVotingPeriodIsOpen();
     });
+
+
+  $scope.getComments = function(){
+    CommentFactory.get()
+      .then(function (res) {
+        console.log('PuppiesAreBeautiful',res.data);
+        $scope.comments = res.data;
+      });
+  };
+
+  $scope.getComments();
+  // console.log('PUPPIESPUPPIESPUPPIES',$scope.comments);
+  
+  $scope.sendComment = function(){
+    var commentObj = {};
+    commentObj['user_id'] = $scope.userId;
+    commentObj['content'] = $scope.commentText;
+    commentObj['photo_id'] = $scope.photo.id;
+    commentObj['prompt_id'] = $scope.photo.prompt_id;
+    commentObj['email'] = $scope.email;
+    console.log(commentObj);
+    $scope.commentText = '';
+    CommentFactory.post(commentObj)
+      .then(function (res) {
+        console.log('WE GOT DATA', res.data);
+        $scope.getComments();
+      });
+  };
 
   var dummyComments = [{
     author: "Dustin",
@@ -55,6 +88,5 @@ angular.module("mlp.photo", ['ngFx']) //A simple way to add beautiful animations
     text: "Ok bye"
   }];
   $scope.hideOverlay = true;
-  $scope.comments = dummyComments;
 
 });

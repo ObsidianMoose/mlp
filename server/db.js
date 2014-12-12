@@ -83,9 +83,11 @@ db.schema.hasTable('comments').then(function (exists) {
   if (!exists) {
     db.schema.createTable('comments', function (comment) {
       comment.increments('id').primary();
+      comment.string('email', 255).notNullable();
       comment.string('content', 255).notNullable();
       comment.integer('user_id').references('users.id').notNullable();
       comment.integer('prompt_id').references('prompts.id').notNullable();
+      comment.integer('photo_id').references('photos.id');
       comment.timestamps();
     }).then(function (table) {
       console.log('Created Table', table);
