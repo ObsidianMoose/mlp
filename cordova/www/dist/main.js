@@ -41896,7 +41896,10 @@ angular.module("mlp.prompt", ['ngFx']) // ngFX is simple way to add beautiful an
       var image = new Image();
       var canvas = document.getElementById("canvas");
       image.src = canvas.toDataURL("image/png");
+<<<<<<< HEAD
       console.log(image.src);
+=======
+>>>>>>> c1ce14abc2c28146148202631672c50bc17527a8
       // Upload Image
       $scope.upload = $upload.upload({
         url: '/api/photo',

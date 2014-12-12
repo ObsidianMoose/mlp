@@ -75,8 +75,6 @@ db.schema.hasTable('photos').then(function (exists) {
 });
 
 
-// OBSIDIAN MOOSE: USER SHOULD HAVE MANY COMMENTS:
-
 //Table for comments - one-to-one relationship with user
 //each comment must have content, user_id, and prompt_id
 db.schema.hasTable('comments').then(function (exists) {

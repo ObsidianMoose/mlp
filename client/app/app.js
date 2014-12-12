@@ -157,6 +157,17 @@
             ease: 'back',
             speed: 400
           }
+        })
+        .state('photoArchive', {
+          templateUrl: 'app/photo/photoArchive.html',
+          controller: 'photoArchiveController',
+          url: '/photo-archive',
+          animation: {
+            enter: 'shrink-in',
+            leave: 'grow-out',
+            ease: 'back',
+            speed: 400
+          }
         });
     })
   .controller('HeaderController', function ($scope, Auth, PhotoFactory) {

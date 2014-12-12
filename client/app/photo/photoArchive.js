@@ -1,4 +1,4 @@
-angular.module("mlp.photoArchive", [])
+angular.module("mlp.photoArchive", []) 
 
 .controller("photoArchiveController", function ($scope, PhotoFactory, $state) {
   $scope.userPhotoArchive = PhotoFactory.userPhotoArchive;

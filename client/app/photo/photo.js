@@ -88,5 +88,6 @@ angular.module("mlp.photo", ['ngFx']) //A simple way to add beautiful animations
     text: "Ok bye"
   }];
   $scope.hideOverlay = true;
+  $scope.comments = dummyComments;
 
 });
