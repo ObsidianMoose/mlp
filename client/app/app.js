@@ -145,11 +145,28 @@
             ease: 'back',
             speed: 400
           }
+        })
+        .state('photoArchive', {
+          templateUrl: 'app/photo/photoArchive.html',
+          // controller: 'createPromptController',
+          url: '/photo-archive',
+          animation: {
+            enter: 'shrink-in',
+            leave: 'grow-out',
+            ease: 'back',
+            speed: 400
+          }
         });
     })
-  .controller('HeaderController', function ($scope, Auth) {
+  .controller('HeaderController', function ($scope, Auth, PhotoFactory) {
     $scope.signOut = function () {
       Auth.signOut();
+    };
+    $scope.returnUserId = function() {
+      var userId = Auth.getUserId();
+      // console.log(Auth.getUserId());
+
+      PhotoFactory.getUserPhotoArchive(userId);
     };
   });
 })();

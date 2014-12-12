@@ -60,6 +60,7 @@ input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset, 0px 4px 0
   width: 100px;
   float: right;
   height: 35px;
+  z-index: 99;
 }
 .app-header-sandwich:hover .app-header-menu { display:block; }
 .app-header-sandwich img { float:right; height: 18px; margin:8px 12px 0 0;}
