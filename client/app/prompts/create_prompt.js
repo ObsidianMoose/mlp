@@ -10,7 +10,7 @@ angular.module("mlp.create_prompt", ['ngFx']) // ngFX is simple way to add beaut
 .controller("createPromptController", function ($scope, $http, PromptFactory, Auth, $moment, $state) {
   Auth.isAuth();
   $scope.formData = {
-    title: '',
+    title: 'hi',
     startTime: moment(),
     endTime: moment().add(4, 'h'),
     votingEndTime: moment().add(6, 'h'),
