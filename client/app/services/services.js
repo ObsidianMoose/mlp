@@ -131,7 +131,7 @@ angular.module('mlp.services', [])
       setPromptWinner: setPromptWinner
     };
   })
-  .factory('PhotoFactory', function ($http, MainUrl) {
+  .factory('PhotoFactory', function ($http, MainUrl, $state) {
     var photoFactory = {
       get: function (id) {
         return $http.get(MainUrl.get('/api/photo/' + id), {
@@ -139,6 +139,21 @@ angular.module('mlp.services', [])
         }, {
           withCredentials: true
         });
+      },
+      getUserPhotoArchive: function() {
+        // console.log('inPhotoFactory',userId);
+
+        return $http.get(MainUrl.get('/api/photo/archive'), {
+          // userId: userId,
+          withCredentials: true
+        }, {
+          withCredentials: true
+        })
+        .then(function (res) {
+            console.log('RESPONSE!', res);
+            photoFactory.userPhotoArchive = res;
+            $state.go('photoArchive');
+          });
       }
     };
     return photoFactory;
