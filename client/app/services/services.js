@@ -20,8 +20,12 @@ angular.module('mlp.services', [])
   .factory('Auth', function ($http, $location, $window, $state, MainUrl) {
     // Auth
     var userId;
+    var email;
     var auth = {
       logIn: function (user) {
+        console.log(user);
+        email = user.email;
+        console.log(email,'EMAILEMAILEMAIL')
         return $http.post(MainUrl.get('/login'), {
             email: user.email,
             password: user.password,
@@ -38,6 +42,9 @@ angular.module('mlp.services', [])
       },
       getUserId: function () {
         return userId;
+      },
+      getEmail: function () {
+        return email;
       },
       signUp: function (user) {
         return $http.post(MainUrl.get('/signup'), {
@@ -135,6 +142,23 @@ angular.module('mlp.services', [])
       }
     };
     return photoFactory;
+  })
+  .factory('CommentFactory', function ($http, MainUrl) {
+    var commentFactory = {
+      get: function () {
+        return $http.get(MainUrl.get('/api/comment/'), {
+          withCredentials: true
+        }, {
+          withCredentials: true
+        });
+      },
+      post: function(obj) {
+        return $http.post(MainUrl.get('/api/comment'), _.extend(obj, {withCredentials: true}), {
+        withCredentials: true
+        });
+      }
+    };
+    return commentFactory;
   })
   .directive('appHeader', function() {
     return {
