@@ -126,6 +126,9 @@ angular.module('mlp.services', [])
   })
   .factory('PhotoFactory', function ($http, MainUrl, $state) {
     var photoFactory = {
+      
+      userPhotoArchive: [],
+
       get: function (id) {
         return $http.get(MainUrl.get('/api/photo/' + id), {
           withCredentials: true
@@ -133,8 +136,8 @@ angular.module('mlp.services', [])
           withCredentials: true
         });
       },
-      getUserPhotoArchive: function(userId) {
-        console.log('inPhotoFactory',userId);
+      getUserPhotoArchive: function() {
+        // console.log('inPhotoFactory',userId);
 
         return $http.get(MainUrl.get('/api/photo/archive'), {
           // userId: userId,
@@ -143,6 +146,8 @@ angular.module('mlp.services', [])
           withCredentials: true
         })
         .then(function (res) {
+            console.log('RESPONSE!', res);
+            photoFactory.userPhotoArchive = res;
             $state.go('photoArchive');
           });
       }

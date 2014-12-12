@@ -14,6 +14,7 @@
       'mlp.logIn',
       'mlp.signUp',
       'mlp.photo',
+      'mlp.photoArchive',
       'mlp.create_prompt',
       'mlp.prompt',
       'mlp.prompts',
@@ -141,7 +142,7 @@
         })
         .state('photoArchive', {
           templateUrl: 'app/photo/photoArchive.html',
-          // controller: 'createPromptController',
+          controller: 'photoArchiveController',
           url: '/photo-archive',
           animation: {
             enter: 'shrink-in',
@@ -155,11 +156,11 @@
     $scope.signOut = function () {
       Auth.signOut();
     };
-    $scope.returnUserId = function() {
-      var userId = Auth.getUserId();
+    $scope.getPhotoArchive = function() {
+      // var userId = Auth.getUserId();
       // console.log(Auth.getUserId());
 
-      PhotoFactory.getUserPhotoArchive(userId);
+      PhotoFactory.getUserPhotoArchive();
     };
   });
 })();
