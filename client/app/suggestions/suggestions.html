@@ -1,5 +1,22 @@
 <div class="app-prompt">
     <div class="app-title">Suggestions</div>
+
+    <div ng-repeat="(key, value) in categories">
+      <a href="#" class="app-prompt-box left-align hover-red">
+        <div class="app-box-text">{{key}}</div>
+        <div class="app-box-arrow">
+          <img src="img/next.png" />
+        </div>
+      </a>
+    </div>
+
+<!-- $scope.categories = {
+      'Raunchy Office': ['RO1', 'RO2', 'RO3', 'RO4', 'RO5'],
+      'Sunday church friends': ['SCF1', 'SCF2', 'SCF3', 'SCF4', 'SCF5'],
+      'For kids': ['FK1', 'FK2', 'FK3', 'FK4', 'FK5'],
+      'Night at the club': ['NATC1', 'NATC2', 'NATC3', 'NATC4', 'NATC5']
+    }
+
     <a href="#" class="app-prompt-box left-align hover-red">
       <div class="app-box-text">Raunchy office</div>
       <div class="app-box-arrow">
@@ -23,6 +40,6 @@
       <div class="app-box-arrow">
         <img src="img/next.png" />
       </div>
-    </a>
+    </a> -->
   </div>
 </div>

@@ -1,7 +1,10 @@
 <div class="app-prompt">
-    <div class="app-title">Raunchy office</div>
-    <a href="#" class="app-prompt-box left-align hover-red paragraph">
-      <div class="app-box-text">Catching a coworker as they walk into the bathroom."</div>
+  <div class="app-title">Title of Category Suggestions</div>
+  <div class="app-box-text" ng-repeat="suggestion in randomList" ng-click="exampleFunction(suggestion)">{{suggestion}}</div>
+  <div class="app-box-text" ng-click="changeStateToSuggestions()">See More Suggestions</div>
+
+
+<!--     <a href="#" class="app-prompt-box left-align hover-red paragraph">
       <div class="app-box-arrow">
         <img src="img/next.png" />
       </div>
@@ -24,5 +27,5 @@
         <img src="img/next.png" />
       </div>
     </a>
-  </div>
+  </div> -->
 </div>

@@ -129,9 +129,16 @@
           }
         })
         .state('createPrompt', {
-          templateUrl: 'app/prompts/create_prompt.html',
-          controller: 'createPromptController',
+          // templateUrl: 'app/prompts/create_prompt.html',
+          // controller: 'createPromptController',
           url: '/create-prompt',
+          views: {
+            '': {templateUrl: 'app/prompts/create_prompt.html', 
+            controller: 'createPromptController'},
+            'createPromptSuggestions@createPrompt': {
+              templateUrl: 'app/suggestions/suggestions_prompts.html',
+              controller: 'suggestionsPromptsController'}
+          },
           animation: {
             enter: 'shrink-in',
             leave: 'grow-out',
