@@ -178,7 +178,7 @@ angular.module('mlp.services', [])
   .factory('SuggestionsFactory', function ($http, MainUrl) {
     var SuggestionsFactory = {
       categories: {
-        'Hack Reactor': ['Black Shirt', 'The Many Sides of Marcus', 'Ugly Code (ew)', 'Coffee Mug', 'Coding makes me feel like', 'How I felt the first time I met backbonejs'],
+        'Hack Reactor': ['Black Shirt', 'Ugly Code (ew)', 'Coffee Mug', 'Coding makes me feel', 'first time I met backbonejs'],
         'Nature': ['Sunset', 'Sunrise', 'Water', 'Pretty', 'Animal', 'Hike', 'Snow', 'Sky'],
         'Adjectives': ['Victorious', 'Basic', 'Fantastic', 'Famous', 'Mysterious', 'Rambunctious', 'Shocking']
       }
