@@ -2,16 +2,23 @@
 
 angular.module("mlp.suggestions_prompts", ['ngFx'])
 
-.controller("suggestionsPromptsController", function ($scope, $state, Auth) {
+.controller("suggestionsPromptsController", function ($scope, SuggestionsFactory, $state, Auth) {
   Auth.isAuth();
   //hard coded suggestions
-  $scope.suggestions = ['', 
-  'suggestion2', 
-  'suggestion3', 
-  'suggestion4', 
-  'suggestion5', 
-  'suggestion6', 
-  'suggestion7'];
+
+  $scope.categories = SuggestionsFactory.categories
+  $scope.getAllSuggestions = function() {
+    var result = [];
+    for (category in $scope.categories) {
+      var i = 0;
+      while ($scope.categories[category][i]) {
+        result.push($scope.categories[category][i])
+        i++;
+      }
+    }
+    return result;
+  };
+  $scope.suggestions = $scope.getAllSuggestions();
   $scope.randomListGenerator = function(number) {
   	var result = [];
 	var suggestions = $scope.suggestions.slice();
