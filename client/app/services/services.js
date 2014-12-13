@@ -180,7 +180,7 @@ angular.module('mlp.services', [])
       categories: {
         'Hack Reactor': ['Black Shirt', 'The Many Sides of Marcus', 'Ugly Code (ew)', 'Coffee Mug', 'Coding makes me feel like', 'How I felt the first time I met backbonejs'],
         'Nature': ['Sunset', 'Sunrise', 'Water', 'Pretty', 'Animal', 'Hike', 'Snow', 'Sky'],
-        'Adjectives': ['Victorious', 'Basic', 'Fantastic', 'H.A.M.', 'Famous', 'Mysterious', 'Rambunctious', 'Shocking']
+        'Adjectives': ['Victorious', 'Basic', 'Fantastic', 'Famous', 'Mysterious', 'Rambunctious', 'Shocking']
       }
     };
     return SuggestionsFactory;
