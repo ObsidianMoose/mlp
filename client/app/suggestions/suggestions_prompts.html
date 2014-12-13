@@ -1,8 +1,9 @@
 <div class="app-prompt">
-  <div class="app-title">Title of Category Suggestions</div>
-  <div class="app-box-text" ng-repeat="suggestion in randomList" ng-click="exampleFunction(suggestion)">{{suggestion}}</div>
-  <div class="app-box-text" ng-click="changeStateToSuggestions()">See More Suggestions</div>
+  <div class="app-suggestion-box" ng-repeat="suggestion in randomList" ng-click="exampleFunction(suggestion)"><b>{{suggestion}}</b></div>
+  <div class="app-suggestion-box" ng-click="changeStateToSuggestions()"><b style="color:#50723c">See More Suggestions</b></div>
+  <br>
 
+  <a class="app-prompt-box left-align hover-red paragraph" ng-repeat="suggestion in categories[id]" ng-click="goToCreatePrompt(suggestion)"><div>{{suggestion}}</div></a>
 
 <!--     <a href="#" class="app-prompt-box left-align hover-red paragraph">
       <div class="app-box-arrow">
