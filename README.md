@@ -1,7 +1,7 @@
 # Fotos To Fotos
 
 Apples to Apples for your phone.
-Any user can submit prompt and competitors will submit a photo in reply. The user that submits the photo chooses the winner.
+Any user can submit a prompt and competitors will submit a photo in reply. The user that submits the photo chooses the winner.
 
 ## Setup
 
